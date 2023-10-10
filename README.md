@@ -9,7 +9,7 @@
 9. 클래스 접근 제어자는 private protected default public 순서로 해주세요, static은 제일 위로 
 
 Ex) 
-
+```
 Class A() {
     private static int a = 30;
 
@@ -18,3 +18,4 @@ Class A() {
     prvate int c = 10;
     prvate int d = 10;
 }
+```
