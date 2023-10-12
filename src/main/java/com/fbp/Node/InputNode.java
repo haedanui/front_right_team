@@ -1,24 +1,27 @@
 package com.fbp.Node;
 
+import com.fbp.Exception.IllegalArgumentException;
+import com.fbp.Exception.OutOfBoundException;
+import com.fbp.Exception.AlreadyExistsException;
 import com.fbp.Message.Message;
 import com.fbp.Port.Port;
 
-public class InputNode extends ActiveNode{
-    private final Port[] peerPorts;
+public abstract class InputNode extends ActiveNode{
+    protected final Port[] peerPorts;
 
-    public InputNode(int count){
-        super();
+    protected InputNode(int count, String name){
+        super(name);
         if(count<=0){
-            //TODO 예왜이럼 처리
+            throw new IllegalArgumentException();
         }
         peerPorts = new Port[count];
     }
     public void connect(int index, Port port){
-        if (count <= index){
-
+        if (peerPorts.length <= index){
+            throw new OutOfBoundException();
         }
         if(peerPorts[index]!= null){
-
+            throw new AlreadyExistsException();
         }
         peerPorts[index] = port;
     }
