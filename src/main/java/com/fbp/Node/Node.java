@@ -1,5 +1,6 @@
 package com.fbp.Node;
 
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 import ch.qos.logback.classic.Logger;
@@ -9,18 +10,24 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Getter
 public abstract class Node {
-    static int count;
-    // final String id;
-    String name;
-    Logger logger;
-    UUID id;
+    private static int count;
 
-    public Node(){
+    protected final UUID id;
+    protected final OffsetDateTime createdDate;
+    protected String name;
+    protected Logger logger;
+
+    protected Node(String name) {
         count++;
-        //id = String.format("%s-%02d", getClass().getSimpleName(),count);
-        id = UUID.randomUUID();
-        log.trace("create node : {}", id);
 
+        createdDate = OffsetDateTime.now();
+        id = UUID.randomUUID();
+        this.name = name;
+
+        log.trace("create node : {}", id);
     }
-    public abstract void setName(String name);
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
