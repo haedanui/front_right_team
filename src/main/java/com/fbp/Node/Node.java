@@ -10,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Getter
 public abstract class Node {
-    private static int count;
+    private static int nodeCount;
 
     protected final UUID id;
     protected final OffsetDateTime createdDate;
@@ -18,7 +18,7 @@ public abstract class Node {
     protected Logger logger;
 
     protected Node(String name) {
-        count++;
+        nodeCount++;
 
         createdDate = OffsetDateTime.now();
         id = UUID.randomUUID();
@@ -29,5 +29,9 @@ public abstract class Node {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public static int getNodeCount() {
+        return nodeCount;
     }
 }
