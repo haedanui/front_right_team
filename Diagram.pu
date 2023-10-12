@@ -1,0 +1,110 @@
+@startuml Diagram
+
+abstract class Node{
+    -{static}nodeCount : int
+    #id : UUID
+    #createdData OffsetDataTime
+    #name : String
+    #logger : Logger
+    +Node(name)
+    +setName(name) : void
+    +getNodeCount() : int
+}
+
+abstract class ActiveNode{
+    #startTime
+    #thread
+    #interval
+    #ActiveNode(name)
+    +setInterval(interval) : void
+    +start() : void
+    +stop() : void
+    +run() : void
+    {abstract}preprocess() : void
+    {abstract}process() : void
+    {abstract}postprocess() : void
+
+}
+
+Abstract class InputNode{
+    #peerPorts : Port[]
+    #InputNode(count, name)
+    +connect(index, port) : void
+    output(message) : void
+}
+
+class StandardInNode{
+
+}
+
+class SocketInNode{
+
+}
+
+abstract class OutputNode{
+
+}
+
+class StandardOutNode{
+
+}
+
+class SocketOutNode{
+
+}
+
+abstract class ProcessNode{
+
+}
+
+class HTTPClientNode{
+
+}
+
+class HTTPServerNode{
+
+}
+
+class FilterNode{
+
+}
+
+class PredicateNode{
+
+}
+
+class SelectionNode{
+
+}
+
+abstract class TraceNode{
+
+}
+
+abstract class ExtraNode{
+
+}
+
+
+
+interface Runnable{
+    +run() : void
+}
+
+Node <|-- ActiveNode
+ActiveNode <|.. Runnable
+ActiveNode <|-- InputNode
+InputNode <|-- StandardInNode
+InputNode <|-- SocketInNode
+ActiveNode <|-- OutputNode
+OutputNode <|-- StandardOutNode
+OutputNode <|-- SocketOutNode
+ActiveNode <|-- ProcessNode
+ProcessNode <|-- HTTPClientNode
+ProcessNode <|-- HTTPServerNode
+ProcessNode <|-- FilterNode
+ProcessNode <|-- PredicateNode
+ProcessNode <|-- SelectionNode
+ActiveNode <|-- TraceNode
+ActiveNode <|-- ExtraNode
+@enduml
