@@ -42,7 +42,10 @@ class SocketInNode{
 }
 
 abstract class OutputNode{
-
+    #ports : Port[]
+    #OutputNode(count, name)
+    +getInputPortCount() : int
+    +connect(index) : Port
 }
 
 class StandardOutNode{
