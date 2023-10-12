@@ -11,7 +11,7 @@ public abstract class ActiveNode extends Node implements Runnable {
 
     public ActiveNode() {
         super();
-        thread = new Thread(this, getId());
+        thread = new Thread(this, getId().toString());
     }
 
     public ActiveNode(String name) {
