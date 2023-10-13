@@ -7,6 +7,9 @@ import java.net.Socket;
 
 import com.fbp.Message.Message;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class SocketOutNode extends OutputNode{
     Socket socket;
     BufferedWriter writer;
@@ -23,6 +26,7 @@ public class SocketOutNode extends OutputNode{
     }
     @Override
     void preprocess() {
+        log.info("SocketOut preprocess");
         setInterval(1);
         try {
             writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
@@ -33,6 +37,7 @@ public class SocketOutNode extends OutputNode{
 
     @Override
     void process() {
+        log.info("SocketOut process");
         for(int i = 0; i < getInputPortLength(); i++){
             if(getInputPort(i)!=null||getInputPort(i).hasMessage()){
                 Message message = getInputPort(i).get();
@@ -48,6 +53,7 @@ public class SocketOutNode extends OutputNode{
 
     @Override
     void postprocess() {
+        log.info("SocketOut postprocess");
         try {
             writer.close();
         } catch (IOException e) {

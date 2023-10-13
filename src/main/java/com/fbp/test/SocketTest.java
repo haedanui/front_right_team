@@ -10,9 +10,13 @@ public class SocketTest {
     public static void main(String[] args) {
         int port = 7797;
         try {
-            Socket Socket = new Socket("localhost", port);
-            SocketInNode reader = new SocketInNode("in", Socket, port);
-            SocketOutNode writer = new SocketOutNode("out", Socket, port);
+            Socket socket = new Socket("localhost", port);
+            SocketInNode reader = new SocketInNode("in", socket, port);
+            SocketOutNode writer = new SocketOutNode("out", socket, port);
+
+            writer.run();
+            reader.run();
+
         } catch (IOException e) {
             e.getStackTrace();
         }
