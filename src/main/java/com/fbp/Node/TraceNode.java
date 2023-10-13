@@ -26,7 +26,6 @@ public class TraceNode extends ActiveNode {
     void preprocess() {
     }
 
-
     @Override
     void process() {
         for(int i = 0; i < wires.length; i++) {
@@ -35,7 +34,6 @@ public class TraceNode extends ActiveNode {
             }
         }
     }
-
 
     @Override
     void postprocess() {
