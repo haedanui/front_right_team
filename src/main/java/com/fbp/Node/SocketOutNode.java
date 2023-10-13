@@ -48,7 +48,6 @@ public class SocketOutNode extends OutputNode{
         try {
             writer.close();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
