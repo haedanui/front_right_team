@@ -16,7 +16,7 @@ public abstract class InputNode extends ActiveNode{
         }
         peerPorts = new Port[count];
     }
-    public void connect(int index, Port port){
+    protected void connect(int index, Port port){
         if (peerPorts.length <= index){
             throw new OutOfBoundException();
         }
@@ -24,6 +24,12 @@ public abstract class InputNode extends ActiveNode{
             throw new AlreadyExistsException();
         }
         peerPorts[index] = port;
+    }
+    protected int getOutputPortLength(){
+        return peerPorts.length;
+    }
+    protected Port getOutputPort(int count){
+        return peerPorts[count];
     }
 
     void output(Message message){
