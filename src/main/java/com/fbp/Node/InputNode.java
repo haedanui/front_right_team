@@ -16,7 +16,7 @@ public abstract class InputNode extends ActiveNode{
         }
         outputPorts = new Port[count];
     }
-    protected void connect(int index, Port port){
+    public void connect(int index, Port port){
         if (outputPorts.length <= index){
             throw new OutOfBoundException();
         }
@@ -25,10 +25,10 @@ public abstract class InputNode extends ActiveNode{
         }
         outputPorts[index] = port;
     }
-    protected int getOutputPortLength(){
+    public int getOutputPortLength(){
         return outputPorts.length;
     }
-    protected Port getOutputPort(int count){
+    public Port getOutputPort(int count){
         return outputPorts[count];
     }
 

@@ -8,7 +8,7 @@ import com.fbp.Port.Port;
 public abstract class OutputNode extends ActiveNode{
     protected Port[] inputPorts;
 
-    public OutputNode(int count, String name){
+    protected OutputNode(int count, String name){
         super(name);
         if(count<=0){
             throw new IllegalArgumentException();
@@ -16,11 +16,11 @@ public abstract class OutputNode extends ActiveNode{
         inputPorts = new Port[count];
         
     }
-    public OutputNode(String name){
+    protected OutputNode(String name){
         super(name);
         inputPorts = new Port[1];
     }
-    protected void connect(int index, Port port){
+    public void connect(int index, Port port){
         if(inputPorts.length < index){
             throw new OutOfBoundException();
         }
@@ -29,18 +29,15 @@ public abstract class OutputNode extends ActiveNode{
         }
         inputPorts[index] = port;
     }
-    protected int getInputPortLength(){
+    public int getInputPortLength(){
         return inputPorts.length;
     }
-    protected Port getInputPort(int index){
-        return inputPorts[index];
-    }
-    void output(Message message){
-        for(int i = 0; i<inputPorts.length; i++){
-            if(inputPorts[i]!=null){
-                inputPorts[i].put(message);
-            }
+    public Port getInputPort(int index){
+        if (index < 0 || inputPorts.length <= index) {
+            throw new OutOfBoundException();
         }
+
+        return inputPorts[index];
     }
 
     
