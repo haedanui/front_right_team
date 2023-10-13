@@ -7,35 +7,35 @@ import com.fbp.Message.Message;
 import com.fbp.Port.Port;
 
 public abstract class InputNode extends ActiveNode{
-    protected final Port[] peerPorts;
+    protected final Port[] outputPorts;
 
     protected InputNode(int count, String name){
         super(name);
         if(count<=0){
             throw new IllegalArgumentException();
         }
-        peerPorts = new Port[count];
+        outputPorts = new Port[count];
     }
-    protected void connect(int index, Port port){
-        if (peerPorts.length <= index){
+    public void connect(int index, Port port){
+        if (outputPorts.length <= index){
             throw new OutOfBoundException();
         }
-        if(peerPorts[index]!= null){
+        if(outputPorts[index]!= null){
             throw new AlreadyExistsException();
         }
-        peerPorts[index] = port;
+        outputPorts[index] = port;
     }
-    protected int getOutputPortLength(){
-        return peerPorts.length;
+    public int getOutputPortLength(){
+        return outputPorts.length;
     }
-    protected Port getOutputPort(int count){
-        return peerPorts[count];
+    public Port getOutputPort(int count){
+        return outputPorts[count];
     }
 
     void output(Message message){
-        for(int i = 0; i<peerPorts.length; i++){
-            if(peerPorts[i]!=null){
-                peerPorts[i].put(message);
+        for(int i = 0; i<outputPorts.length; i++){
+            if(outputPorts[i]!=null){
+                outputPorts[i].put(message);
             }
         }
     }
