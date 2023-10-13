@@ -2,7 +2,6 @@ package com.fbp.Node;
 
 import com.fbp.Exception.AlreadyExistsException;
 import com.fbp.Exception.OutOfBoundException;
-import com.fbp.Message.Message;
 import com.fbp.Port.Port;
 
 public abstract class OutputNode extends ActiveNode{
