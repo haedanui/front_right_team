@@ -6,7 +6,7 @@ import lombok.Getter;
 public abstract class ActiveNode extends Node implements Runnable {
     protected long startTime;
     protected Thread thread;
-    protected long interval = 1_000;
+    private long interval = 1_000;
 
     protected ActiveNode(String name) {
         super(name);
