@@ -14,10 +14,9 @@ public class TraceNode extends ActiveNode {
         wires = new Wire[count];
     }
 
-
-    public void connect(Wire new_Wire,int index) {
+    public void connect(Wire wire, int index) {
         if (wires[index] == null) {
-            wires[index] = new_Wire;
+            wires[index] = wire;
         } else {
             throw new IllegalArgumentException();
         }
@@ -31,8 +30,8 @@ public class TraceNode extends ActiveNode {
     @Override
     void process() {
         for(int i = 0; i < wires.length; i++) {
-            if (wires[i] != null) {
-                log.trace(String.valueOf(wires[i]));
+            if (wires[i] != null && wires[i].hasMessage()) {
+                log.trace(wires[i].get().toString());
             }
         }
     }
