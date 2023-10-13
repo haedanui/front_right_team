@@ -10,13 +10,16 @@ import com.fbp.Message.Message;
 public class SocketOutNode extends OutputNode{
     Socket socket;
     BufferedWriter writer;
-    public SocketOutNode(int count, String name, Socket socket){
+    int port;
+    public SocketOutNode(int count, String name, Socket socket, int port){
         super(count, name);
         this.socket = socket;
+        this.port = port;
     }
-    public SocketOutNode(String name, Socket socket){
+    public SocketOutNode(String name, Socket socket, int port){
         super(name);
         this.socket = socket;
+        this.port = port;
     }
     @Override
     void preprocess() {

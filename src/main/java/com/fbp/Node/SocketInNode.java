@@ -10,19 +10,24 @@ import com.fbp.Message.Message;
 public class SocketInNode extends InputNode{
     Socket socket;
     BufferedReader reader;
-    public SocketInNode(int count, String name, Socket socket){
+    int port;
+    public SocketInNode(int count, String name, Socket socket, int port){
         super(count, name);
         this.socket = socket;
+        this.port = port;
     }
-    public SocketInNode(String name, Socket socket){
+    public SocketInNode(String name, Socket socket, int port){
         super(1, name);
         this.socket = socket;
+        this.port = port;
     }
 
     @Override
     void preprocess() {
         setInterval(1);
         try{
+            socket = new Socket("localhost", port);
+            
             reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         } catch(IOException e){
             e.printStackTrace();
