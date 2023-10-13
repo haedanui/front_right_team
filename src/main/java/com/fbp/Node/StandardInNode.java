@@ -2,7 +2,7 @@ package com.fbp.Node;
 
 import java.util.Scanner;
 
-import javax.management.monitor.StringMonitor;
+import com.fbp.Message.*;
 
 public class StandardInNode extends InputNode{
     Scanner scanner;
@@ -21,7 +21,8 @@ public class StandardInNode extends InputNode{
     @Override
     void process() {
         String line = scanner.nextLine();
-        StringMessage message = new StringMessage(line);
+        Message m = new StringMessage(line);
+        StringMessage message = (StringMessage) m;
         output(message);
     }
 

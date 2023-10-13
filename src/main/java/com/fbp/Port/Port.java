@@ -20,6 +20,7 @@ public class Port {
     }
 
     public Message get(){
+        //Message messageInfo = messageQueue.poll();
         return messageQueue.poll();
     }
 }
