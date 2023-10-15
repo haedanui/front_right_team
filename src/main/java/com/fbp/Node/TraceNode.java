@@ -5,6 +5,12 @@ import com.fbp.Wire.Wire;
 
 import lombok.extern.slf4j.Slf4j;
 
+/*
+ * exception을 처리할 수 있다는 말의 뜻을 모름
+ * 익셉션을 트레이스 노드에서 다룬다?
+ * 익셉션을 트레이스 노드에서 출력한다?
+ */
+
 @Slf4j
 public class TraceNode extends ActiveNode {
     Wire[] wires;

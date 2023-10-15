@@ -1,0 +1,37 @@
+Hypertext Transfer Protocol
+클라이언트가 HTTP request를 서버에 보내면 서버는 HTTP response를 보내는 구조
+클라이언트와 서버의 모든 통신이 요청과 응답으로 이루어 진다.
+HTTP 요청의 구성 요소
+
+Request Message
+Start line
+headers
+
+body
+
+- GET /test.html HTTP/1.1 Start line (HTTP Method / Request Target / Http Version)
+- headers : key value의 형태로 구성되어 있다
+Host 요청하려는 서버 호스트 이름과 포트번호
+User-agent 클라이언트 프로그램 정보. 이 정보를 통해 서버는 클라이언트 프로그램(브라우저)에 맞는 최적의 데이터를 보내줄 수 있다.
+Referer 바로 직전에 머물렀던 웹 링크 주소 
+Accept 클라이언트가 처리 가능한 미디어 타입 종류 나열
+If-Modified-Since 여기에 쓰여진 시간 이후로 변경된 리소스 취득. 페이지가 수정되었으면 최신 페이지로 교체한다.
+Authorization 인증 토큰을 서버로 보낼 때 쓰이는 Header
+Origin 서버로 Post 요청을 보낼 때 요청이 어느 주소에 시작되었는지 나타내는 값. 이 값으로 요청을 보낸 주소와 받는 주소가 다르면 CORS(Cross-Origin Resource Sharing) 에러가 발생한다.
+Cookie 쿠키 값이 key-value로 표현된다.
+
+body : Http request가 전송하는 데이터를 담고 있는 부분, 데이터가 없을 경우 제외됨
+
+// 
+
+Response Message
+
+status
+headers
+
+body
+
+HTTP/1.1 200 Ok - status line (HTTP version / status code / status text)
+headers : 요청 메세지와 동일하나 응답 메세지에서만 쓰이는 값이 있음 
+
+body : 
